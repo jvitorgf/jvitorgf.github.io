@@ -1,7 +1,17 @@
 .title{
 	text-align: center;
+
 }
 
 body{
 	font-family: 'Inter', sans-serif;
+}
+
+
+.img-resize{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 15%;
+	height: auto
 }
