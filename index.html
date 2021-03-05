@@ -5,11 +5,9 @@
 	<link rel="stylesheet" type="text/css" href="estilos.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-
-
-	">
 </head>
 <body>
 	<img class="img-resize" src="home-food.png">	
@@ -21,8 +19,10 @@
 	<h2 id="vazio" class="title hide"><i class="fas fa-times"></i> Erro: o campo não pode ser vazio.</h2>
 	<h2 id="qtdMin" class="title hide"><i class="fas fa-times"></i> Erro: o campo deve possuir pelo menos 3 caracteres.</h2>
 
+	<ul id="lista"></ul>
+
 	<script type="text/javascript">
-		
+		var container = document.querySelector("#lista");
 		document.querySelector("#botao-busca").addEventListener("click",validarInput);
 
 		function validarInput(){
@@ -35,8 +35,20 @@
 			}else if (input.length < 3){
 				document.querySelector("#qtdMin").classList.remove("hide");
 				return false;
+			}else{
+				axios.get("https://world.openfoodfacts.org/cgi/search.pl?search_terms=pizza+de+queijo&search_simple=1&action=process&json=1").then
+				(function(res){
+					console.log(res);	
+					let products = res.data.products;
+					for(var i = 0; i <products.length && i< 10 ;i++){
+						var li = document.createElement("li");
+						li.innerHTML = products[i].generic_name;
+						container.appendChild(li);
+					}
+				});
 			}
 		}
+
 	</script>
 </body>
 </html>
