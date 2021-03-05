@@ -8,8 +8,23 @@
 </head>
 <body>
 	<img class="img-resize" src="home-food.png">	
-	<h1 class="title">Search for any food</h1>
-	<input class="input-resize" type="text" size="30" name="">
-	<button class="button-resize" type="button">Search</button>
+	<h1 class="title">Procure por qualquer comida</h1>
+	<input id="input-busca" class="input-resize" type="text" size="30" name="">
+	<button id="botao-busca" class="button-resize" type="button">Buscar</button>
+	<script type="text/javascript">
+		
+		document.querySelector("#botao-busca").addEventListener("click",validarInput);
+
+		function validarInput(){
+			var input = document.querySelector("#input-busca").value;
+			if (input == ""){
+				alert("Input nao pode ser vazio");
+				return false;
+			}else if (input.length < 3){
+				alert("Input deve ter ao minimo 3 caracteres");
+				return false;
+			}
+		}
+	</script>
 </body>
 </html>
