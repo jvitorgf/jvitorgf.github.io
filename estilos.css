@@ -42,3 +42,7 @@ body{
 .button-resize:hover{
 	background-color: #8071c7;
 }
+
+.hide{
+	display:none;
+}

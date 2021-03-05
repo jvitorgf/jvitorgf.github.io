@@ -5,23 +5,35 @@
 	<link rel="stylesheet" type="text/css" href="estilos.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css
+
+
+
+	">
 </head>
 <body>
 	<img class="img-resize" src="home-food.png">	
 	<h1 class="title">Procure por qualquer comida</h1>
 	<input id="input-busca" class="input-resize" type="text" size="30" name="">
 	<button id="botao-busca" class="button-resize" type="button">Buscar</button>
+
+	
+	<h2 id="vazio" class="title hide"><i class="fas fa-times"></i> Erro: o campo não pode ser vazio.</h2>
+	<h2 id="qtdMin" class="title hide"><i class="fas fa-times"></i> Erro: o campo deve possuir pelo menos 3 caracteres.</h2>
+
 	<script type="text/javascript">
 		
 		document.querySelector("#botao-busca").addEventListener("click",validarInput);
 
 		function validarInput(){
+			document.querySelector("#vazio").classList.add("hide");
+			document.querySelector("#qtdMin").classList.add("hide");
 			var input = document.querySelector("#input-busca").value;
 			if (input == ""){
-				alert("Input nao pode ser vazio");
+				document.querySelector("#vazio").classList.remove("hide");
 				return false;
 			}else if (input.length < 3){
-				alert("Input deve ter ao minimo 3 caracteres");
+				document.querySelector("#qtdMin").classList.remove("hide");
 				return false;
 			}
 		}
