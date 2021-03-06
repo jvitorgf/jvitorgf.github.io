@@ -1,0 +1,48 @@
+.title{
+	text-align: center;
+
+}
+
+body{
+	font-family: 'Inter', sans-serif;
+}
+
+
+.img-resize{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 15%;
+	height: auto
+}
+
+.input-resize{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	height: 50px;
+	font-size: 50px;
+	border:1px black solid;
+}
+
+.button-resize{
+	display: block;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 15%;
+	height: 50px;
+	font-size: 25px;
+	border-radius: 8px;
+	background-color: #190a63;
+	color:white;
+}
+
+.button-resize:hover{
+	background-color: #8071c7;
+}
+
+.hide{
+	display:none;
+}
