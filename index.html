@@ -11,7 +11,7 @@
 </head>
 <body>
 	<img class="img-resize" src="home-food.png">	
-	<h1 class="title">Procure por qualquer comida</h1>
+	<h1 class="title">Procure por algum alimento industrializado</h1>
 	<input id="input-busca" class="input-resize" type="text" size="30" name="">
 	<button id="botao-busca" class="button-resize" type="button">Buscar</button>
 
@@ -19,7 +19,9 @@
 	<h2 id="vazio" class="title hide"><i class="fas fa-times"></i> Erro: o campo não pode ser vazio.</h2>
 	<h2 id="qtdMin" class="title hide"><i class="fas fa-times"></i> Erro: o campo deve possuir pelo menos 3 caracteres.</h2>
 
-	<ul id="lista"></ul>
+	<ul id="lista">
+		
+	</ul>
 
 	<script type="text/javascript">
 		var container = document.querySelector("#lista");
@@ -29,6 +31,9 @@
 			document.querySelector("#vazio").classList.add("hide");
 			document.querySelector("#qtdMin").classList.add("hide");
 			var input = document.querySelector("#input-busca").value;
+
+            container.innerHTML = "";
+
 			if (input == ""){
 				document.querySelector("#vazio").classList.remove("hide");
 				return false;
@@ -36,13 +41,28 @@
 				document.querySelector("#qtdMin").classList.remove("hide");
 				return false;
 			}else{
-				axios.get("https://world.openfoodfacts.org/cgi/search.pl?search_terms=pizza+de+queijo&search_simple=1&action=process&json=1").then
+				var query = document.querySelector("#input-busca").value;
+				axios.get("https://world.openfoodfacts.org/cgi/search.pl?search_terms=" +
+				query + "&search_simple=1&action=process&json=1").then
 				(function(res){
 					console.log(res);	
 					let products = res.data.products;
 					for(var i = 0; i <products.length && i< 10 ;i++){
 						var li = document.createElement("li");
-						li.innerHTML = products[i].generic_name;
+						var img = document.createElement("img");
+						var img_url = products[i].image_url;
+
+
+						li.innerHTML = products[i].product_name + " - " + products[i].quantity +
+						" - " +products[i].nutriscore_grade +
+						" - " +products[i].brands +
+						" - " +products[i].nutriments.fat_100g +
+						" - " + products[i].nutriments["saturated-fat_100g"] +
+						" - " + products[i].nutriments.salt_100g +
+						" - " + products[i].nutriments.sugars_100g ;
+
+						img.src = img_url;
+						li.appendChild(img);
 						container.appendChild(li);
 					}
 				});
