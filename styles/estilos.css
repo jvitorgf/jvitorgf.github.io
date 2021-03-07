@@ -59,7 +59,7 @@ body{
 
 .img-card-resize{
 	width: 12%;
-	height: auto
+	height: 58.5%;
 }
 
 .card-nome{
@@ -93,8 +93,8 @@ body{
 	margin-top: -200px;
 	text-align: center;
 	font-size: 30px;
-		border-left: 1px solid black;
-		border-bottom: 	1px solid black;
+	border-left: 1px solid black;
+	border-bottom: 	1px solid black;
 
 
 	
@@ -116,4 +116,9 @@ body{
 
 .serving-nutri-facts{
 	font-size: 25px;
+}
+
+.score{
+	text-transform: uppercase;
+
 }
