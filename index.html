@@ -51,21 +51,21 @@
 			</span>
 		</div>
 
-	
+
 	</div>
 
-
+	<div id="container">
+		
+	</div>
 	
 
 	<script type="text/javascript">
+		var container = document.querySelector("#container");
 		document.querySelector("#botao-busca").addEventListener("click",validarInput);
-		var div = document.createElement("div");
-		var body = document.querySelector("body");	
-
-
-
+		
 		function validarInput(){
-			div.innerHTML ="";
+			container.innerHTML = "";
+
 			document.querySelector("#vazio").classList.add("hide");
 			document.querySelector("#qtdMin").classList.add("hide");
 			var input = document.querySelector("#input-busca").value;
@@ -89,6 +89,8 @@
 
 
 
+						var div = document.createElement("div");
+						var body = document.querySelector("body");	
 
 						
 						var divnome = document.createElement("div");
@@ -217,7 +219,8 @@
 																	div.appendChild(divmarca);
 																	div.appendChild(divnutriscore);
 																	div.appendChild(divinfonutri);
-																	body.appendChild(div);
+																	container.appendChild(div);
+																	body.appendChild(container);
 																}
 															}
 														}
@@ -236,7 +239,7 @@
 
 					
 				});
-		}
+}
 }
 
 </script>
