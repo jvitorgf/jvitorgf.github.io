@@ -66,6 +66,7 @@
 		document.querySelector("#botao-busca").addEventListener("click",buscar);
 		
 		function buscar(){
+			var flag = 0;
 			container.innerHTML = "";
 			document.querySelector("#nores").classList.add("hide");
 			document.querySelector("#loading").classList.add("hide");
@@ -206,7 +207,7 @@
 
 
 																if(sal >= 0 && sal != undefined){
-
+																	flag = 1;
 																	spanserving.appendChild(strongor);
 																	spanserving.appendChild(span1);
 																	spanserving.appendChild(stronsat);
@@ -243,7 +244,10 @@
 						}
 
 
+					}
 
+					if(flag == 0){
+						document.querySelector("#nores").classList.remove("hide");
 					}
 
 					
