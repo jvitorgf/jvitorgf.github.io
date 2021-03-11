@@ -20,7 +20,7 @@
 	<h2 id="qtdMin" class="title hide"><i class="fas fa-times"></i> Erro: o campo deve possuir pelo menos 3 caracteres.</h2>
 	<h2 id="loading" class="title hide"><i class="fas fa-circle-notch fa-spin"></i> Realizando uma busca ...</h2>
 	<h2 id="nores" class="title hide"><i class="fas fa-exclamation"></i> A busca realizada não retornou resultados.</h2>
-
+	<h2 id="axioserro" class="title hide"><i class="fas fa-times"></i>  A busca realizada falhou. Por favor, tente novamente.</h2>
 	<div class="card hide">
 		<img class="img-card-resize" id="img-card" src="https://static.openfoodfacts.org/images/products/301/762/042/2003/front_fr.248.400.jpg">
 		<div class=card-nome>
@@ -71,6 +71,7 @@
 			document.querySelector("#loading").classList.add("hide");
 			document.querySelector("#vazio").classList.add("hide");
 			document.querySelector("#qtdMin").classList.add("hide");
+			document.querySelector("#axioserro").classList.add("hide");
 			var input = document.querySelector("#input-busca").value;
 
 			if (input == ""){
@@ -246,10 +247,12 @@
 					}
 
 					
+				}).catch(function (erro) {
+					document.querySelector("#axioserro").classList.remove("hide");
 				});
-}
-}
+			}
+		}
 
-</script>
+	</script>
 </body>
 </html>
