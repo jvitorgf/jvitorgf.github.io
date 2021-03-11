@@ -18,6 +18,7 @@
 	
 	<h2 id="vazio" class="title hide"><i class="fas fa-times"></i> Erro: o campo não pode ser vazio.</h2>
 	<h2 id="qtdMin" class="title hide"><i class="fas fa-times"></i> Erro: o campo deve possuir pelo menos 3 caracteres.</h2>
+	<h2 id="loading" class="title hide"><i class="fas fa-circle-notch fa-spin"></i> Realizando uma busca ...</h2>
 
 	<div class="card hide">
 		<img class="img-card-resize" id="img-card" src="https://static.openfoodfacts.org/images/products/301/762/042/2003/front_fr.248.400.jpg">
@@ -65,7 +66,7 @@
 		
 		function buscar(){
 			container.innerHTML = "";
-
+			document.querySelector("#loading").classList.add("hide");
 			document.querySelector("#vazio").classList.add("hide");
 			document.querySelector("#qtdMin").classList.add("hide");
 			var input = document.querySelector("#input-busca").value;
@@ -77,10 +78,12 @@
 				document.querySelector("#qtdMin").classList.remove("hide");
 				return false;
 			}else{
+				document.querySelector("#loading").classList.remove("hide");
 				var query = document.querySelector("#input-busca").value;
 				axios.get("https://world.openfoodfacts.org/cgi/search.pl?search_terms=" +
 					query + "&search_simple=1&action=process&json=1").then
 				(function(res){	
+					document.querySelector("#loading").classList.add("hide");
 					let products = res.data.products;
 					var i = 0;
 					
